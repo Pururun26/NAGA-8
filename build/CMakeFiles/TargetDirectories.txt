@@ -1,0 +1,4 @@
+C:/home/pururun/DevConsole/naga-8/build/CMakeFiles/pocketpy.dir
+C:/home/pururun/DevConsole/naga-8/build/CMakeFiles/naga8.dir
+C:/home/pururun/DevConsole/naga-8/build/CMakeFiles/edit_cache.dir
+C:/home/pururun/DevConsole/naga-8/build/CMakeFiles/rebuild_cache.dir
