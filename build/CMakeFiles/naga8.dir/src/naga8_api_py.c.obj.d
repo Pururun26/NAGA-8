@@ -2,6 +2,7 @@ CMakeFiles/naga8.dir/src/naga8_api_py.c.obj: \
  C:\home\pururun\DevConsole\naga-8\src\naga8_api_py.c \
  C:\home\pururun\DevConsole\naga-8\src\naga8_api_py.h \
  C:\home\pururun\DevConsole\naga-8\src\naga8_api.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdbool.h \
  C:/home/pururun/DevConsole/naga-8/pocketpy/pocketpy.h \
  C:/msys64/ucrt64/include/stdlib.h C:/msys64/ucrt64/include/corecrt.h \
  C:/msys64/ucrt64/include/_mingw.h C:/msys64/ucrt64/include/_mingw_mac.h \
@@ -20,8 +21,9 @@ CMakeFiles/naga8.dir/src/naga8_api_py.c.obj: \
  C:/msys64/ucrt64/include/stdint.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stddef.h \
  C:/msys64/ucrt64/include/stddef.h \
- C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdbool.h \
  C:/home/pururun/DevConsole/naga-8/raylib/raylib-6.0_win64_mingw-w64/include/raylib.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/15.2.0/include/stdarg.h \
  C:/msys64/ucrt64/include/stdarg.h \
- C:/msys64/ucrt64/include/_mingw_stdarg.h
+ C:/msys64/ucrt64/include/_mingw_stdarg.h \
+ C:/msys64/ucrt64/include/string.h \
+ C:/msys64/ucrt64/include/sec_api/string_s.h
