@@ -1,0 +1,35 @@
+import naga
+
+class App:
+    def __init__(self):
+        # slot 0 — сколько раз запускали
+        self.starts = naga.dget(0) + 1
+        naga.dset(0, self.starts)
+
+        # slot 1 — лучший результат (например, пробег)
+        self.best = naga.dget(1)
+
+        self.dist = 0
+        self.dir = 1
+        self.x = 0
+
+        naga.run(self.update, self.draw)
+
+    def update(self):
+        self.x += self.dir
+        self.dist += 1
+        if self.x > 120 or self.x < 0:
+            self.dir *= -1
+
+        if self.dist > self.best:
+            self.best = self.dist
+            naga.dset(1, self.best)
+
+    def draw(self):
+        naga.cls(1)
+        naga.text("STARTS: %d" % self.starts, 4, 120, 7)
+        naga.text("DIST:   %d" % self.dist,   4, 110, 10)
+        naga.text("BEST:   %d" % self.best,   4, 100, 11)
+        naga.rect(self.x, 64, 4, 4, 8)
+
+App()

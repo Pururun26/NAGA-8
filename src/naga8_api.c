@@ -1,7 +1,8 @@
 #include "naga8_api.h"
 #include "naga8_conf.h"
 #include "raylib.h"
-#include "naga_font3x4.h"
+#include "naga8_font3x4.h"
+#include "naga8_audio.h"
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -79,6 +80,7 @@ void naga8_init(void)
     SetWindowState(FLAG_WINDOW_RESIZABLE);
     
     SetTargetFPS(60);
+    naga8_audio_init();
     
     g_rt = LoadRenderTexture(NAGA8_W, NAGA8_H);
     SetTextureFilter(g_rt.texture, TEXTURE_FILTER_POINT);
@@ -90,6 +92,7 @@ void naga8_init(void)
 void naga8_close(void)
 {
     if (!g_inited) return;
+    naga8_audio_close();
     UnloadRenderTexture(g_rt);
     CloseWindow();
     g_inited = false;

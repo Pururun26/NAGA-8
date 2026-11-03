@@ -2,16 +2,22 @@ import naga
 
 class App:
     def __init__(self):
-        self.t = 0
         naga.run(self.update, self.draw)
 
     def update(self):
-        self.t += 1
+        if naga.btnp(4):   # J — pulse 12.5%
+            naga.tone(440, 15, 8, 0)
+        if naga.btnp(5):   # K — pulse 25%
+            naga.tone(660, 15, 8, 1)
+        # Дополнительно на стрелки второго игрока
+        if naga.btnp(4, 1): # NUM4 — triangle
+            naga.tone(880, 20, 6, 2)
+        if naga.btnp(5, 1): # NUM5 — noise (барабан)
+            naga.tone(0, 10, 8, 3)
 
     def draw(self):
-        naga.cls(1)                       # Navy фон
-        naga.text("Hello, NAGA-8!", 4, 4, 7)      # белым
-        naga.text("Score: %d" % self.t, 4, 12, 10) # жёлтым
-        naga.text("line1\nline2\nline3", 4, 24, 11) # построчно, зелёным
+        naga.cls(1)
+        naga.text("J=PULSE12 K=PULSE25", 4, 120, 7)
+        naga.text("NUM4=TRI  NUM5=NOISE", 4, 110, 7)
 
 App()

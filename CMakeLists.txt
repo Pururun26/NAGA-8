@@ -21,6 +21,9 @@ add_executable(naga8
     src/naga8.c
     src/naga8_api.c
     src/naga8_api_py.c
+    src/naga8_log.c
+    src/naga8_audio.c
+    src/naga8_save.c
 )
 
 target_include_directories(naga8 PRIVATE

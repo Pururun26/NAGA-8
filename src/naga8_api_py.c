@@ -2,6 +2,7 @@
 #include "naga8_api.h"
 #include "pocketpy.h"
 #include "raylib.h"
+#include "naga8_save.h"
 
 #include <string.h>
 
@@ -155,17 +156,53 @@ static bool py_spr(int argc, py_Ref argv)
     return true;
 }
 
+// --- Звук ---
+static bool py_tone(int argc, py_Ref argv)
+{
+    if (argc < 4) return false;
+    naga8_tone(
+        (int)py_toint(py_arg(0)),
+        (int)py_toint(py_arg(1)),
+        (int)py_toint(py_arg(2)),
+        (int)py_toint(py_arg(3))
+    );
+    py_newnone(py_retval());
+    return true;
+}
+
+// --- Сохранение/Загрузка ---
+static bool py_dset(int argc, py_Ref argv)
+{
+    if (argc < 2) return false;
+    int slot = (int)py_toint(py_arg(0));
+    int64_t value = py_toint(py_arg(1));
+    naga8_dset(slot, value);
+    py_newnone(py_retval());
+    return true;
+}
+
+static bool py_dget(int argc, py_Ref argv)
+{
+    if (argc < 1) return false;
+    int slot = (int)py_toint(py_arg(0));
+    py_newint(py_retval(), naga8_dget(slot));
+    return true;
+}
+
 void naga8_bind(void)
 {
     py_GlobalRef mod = py_newmodule("naga");
-    py_bind(mod, "run(update, draw)",       py_run);
-    py_bind(mod, "cls(color)",              py_cls);
-    py_bind(mod, "pset(x, y, color)",       py_pset);
-    py_bind(mod, "pget(x, y)",              py_pget);
-    py_bind(mod, "text(s, x, y, color)",    py_text);
-    py_bind(mod, "rect(x, y, w, h, color)", py_rect);
-    py_bind(mod, "btn(i, p=0)",             py_btn);
-    py_bind(mod, "btnp(i, p=0)",            py_btnp);
-    py_bind(mod, "sprdata(id, data)",       py_sprdata);
-    py_bind(mod, "spr(id, x, y, flip_x=0, flip_y=0)", py_spr);
+    py_bind(mod, "run(update, draw)",                   py_run);
+    py_bind(mod, "cls(color)",                          py_cls);
+    py_bind(mod, "pset(x, y, color)",                   py_pset);
+    py_bind(mod, "pget(x, y)",                          py_pget);
+    py_bind(mod, "text(s, x, y, color)",                py_text);
+    py_bind(mod, "rect(x, y, w, h, color)",             py_rect);
+    py_bind(mod, "btn(i, p=0)",                         py_btn);
+    py_bind(mod, "btnp(i, p=0)",                        py_btnp);
+    py_bind(mod, "sprdata(id, data)",                   py_sprdata);
+    py_bind(mod, "spr(id, x, y, flip_x=0, flip_y=0)",   py_spr);
+    py_bind(mod, "tone(freq, dur, vol, ch)",            py_tone);
+    py_bind(mod, "dset(slot, value)",                   py_dset);
+    py_bind(mod, "dget(slot)",                          py_dget);
 }

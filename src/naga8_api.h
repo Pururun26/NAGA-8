@@ -19,4 +19,6 @@ bool naga8_btnp(int i, int p);
 void naga8_sprdata(int id, const char* data);
 void naga8_spr(int id, int x, int y, int flip_x, int flip_y);
 
+void naga8_tone(int frequency, int duration, int volume, int channel);
+
 void naga8_present(void);
